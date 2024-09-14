@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
-const LoginComponent: React.FC = () => {
+const LoginComponent: any = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
@@ -15,17 +12,9 @@ const LoginComponent: React.FC = () => {
         setPassword(e.target.value);
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        try {
-            if (email === 'jbarry28@umd.edu' || password === 'HopHacks2024') {
-                navigate('/dashboard');
-            } else {
-                console.error('Login failed');
-            }
-        } catch (error) {
-            console.error('An error occurred during login', error);
-        }
+        // Add your login logic here
     };
 
     return (
