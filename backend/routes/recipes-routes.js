@@ -1,14 +1,12 @@
-import express, { Request, Response, Router } from 'express';
-import { ObjectId } from 'mongodb';
-import { Db as db } from 'mongodb';
+const express = require("express");
+const { ObjectId } = require("mongodb");
 
-const router: Router = express.Router();
-
+const router = express.Router();
 const collectionName = "recipes";
 
 // Create a new document
-router.post("/", async (req: Request, res: Response) => {
-    const db: db = req.app.locals.db;
+router.post("/", async (req, res) => {
+    const db = req.app.locals.db;
     try {
         const collection = db.collection(collectionName);
         const result = await collection.insertOne(req.body);
@@ -23,8 +21,8 @@ router.post("/", async (req: Request, res: Response) => {
 });
 
 // Get all documents
-router.get("/", async (req: Request, res: Response) => {
-    const db: db = req.app.locals.db;
+router.get("/", async (req, res) => {
+    const db = req.app.locals.db;
     try {
         const collection = db.collection(collectionName);
         const documents = await collection.find({}).toArray();
@@ -35,8 +33,8 @@ router.get("/", async (req: Request, res: Response) => {
 });
 
 // Get a single document by ID
-router.get("/:id", async (req: Request, res: Response) => {
-    const db: db = req.app.locals.db;
+router.get("/:id", async (req, res) => {
+    const db = req.app.locals.db;
     try {
         const collection = db.collection(collectionName);
         const document = await collection.findOne({
@@ -55,8 +53,8 @@ router.get("/:id", async (req: Request, res: Response) => {
 });
 
 // Update a document by ID
-router.put("/:id", async (req: Request, res: Response) => {
-    const db: db = req.app.locals.db;
+router.put("/:id", async (req, res) => {
+    const db = req.app.locals.db;
     try {
         const collection = db.collection(collectionName);
         const { _id, ...updateData } = req.body;
@@ -80,8 +78,8 @@ router.put("/:id", async (req: Request, res: Response) => {
 });
 
 // Delete a document by ID
-router.delete("/:id", async (req: Request, res: Response) => {
-    const db: db = req.app.locals.db;
+router.delete("/:id", async (req, res) => {
+    const db = req.app.locals.db;
     try {
         const collection = db.collection(collectionName);
         const result = await collection.deleteOne({
@@ -101,4 +99,4 @@ router.delete("/:id", async (req: Request, res: Response) => {
     }
 });
 
-export default router;
+module.exports = router;
