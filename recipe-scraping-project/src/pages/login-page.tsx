@@ -1,44 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
     Box,
-    Button,
-    FormControl,
-    FormLabel,
-    Input,
     Heading,
     VStack,
     Alert,
     AlertIcon,
+    Spinner,
 } from "@chakra-ui/react";
+import ProfileComponent from "../components/auth-profile-component";
+import LoginButton from "../components/auth-login-component";
+import LogoutButton from "../components/auth-logout-component";
 
-const LoginComponent: React.FC = () => {
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [error, setError] = useState<string>("");
+const LoginPage: React.FC = () => {
+    const { isAuthenticated, isLoading, error } = useAuth0();
     const navigate = useNavigate();
 
-    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    };
+    if (isLoading) {
+        return <Spinner />;
+    }
 
-    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        try {
-            if (email === "jbarry28@umd.edu" && password === "HopHacks2024") {
-                navigate("/dashboard");
-            } else {
-                setError("Login failed. Please check your email and password.");
-            }
-        } catch (error) {
-            console.error("An error occurred during login", error);
-            setError("An error occurred during login");
-        }
-    };
+    if (isAuthenticated) {
+        // If already authenticated, navigate to the dashboard
+        navigate("/dashboard");
+    }
 
     return (
         <Box maxW="sm" mx="auto" mt="8">
@@ -52,38 +38,20 @@ const LoginComponent: React.FC = () => {
                 {error && (
                     <Alert status="error">
                         <AlertIcon />
-                        {error}
+                        {error.message}
                     </Alert>
                 )}
-                <form onSubmit={handleSubmit}>
-                    <FormControl id="email" isRequired>
-                        <FormLabel>Email</FormLabel>
-                        <Input
-                            type="email"
-                            value={email}
-                            onChange={handleEmailChange}
-                        />
-                    </FormControl>
-                    <FormControl id="password" isRequired mt={4}>
-                        <FormLabel>Password</FormLabel>
-                        <Input
-                            type="password"
-                            value={password}
-                            onChange={handlePasswordChange}
-                        />
-                    </FormControl>
-                    <Button
-                        colorScheme="blue"
-                        type="submit"
-                        width="full"
-                        mt={4}
-                    >
-                        Login
-                    </Button>
-                </form>
+                {isAuthenticated ? (
+                    <>
+                        <ProfileComponent />
+                        <LogoutButton />
+                    </>
+                ) : (
+                    <LoginButton />
+                )}
             </VStack>
         </Box>
     );
 };
 
-export default LoginComponent;
+export default LoginPage;
