@@ -1,12 +1,25 @@
 import { createRoot } from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App.tsx";
-import { StrictMode } from "react";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Heading,
+  VStack,
+  Alert,
+  AlertIcon,
+  Container,
+  Center,
+  ChakraProvider
+} from "@chakra-ui/react";
 
 const root = createRoot(document.getElementById("root")!);
 
 root.render(
-    <StrictMode>
+    <ChakraProvider>
         <Auth0Provider
             domain="dev-lx5lijszjsaxjcw5.us.auth0.com"
             clientId="lrUTsHCL66dg1N6ykzwszsbqzLtYTTLu"
@@ -16,5 +29,5 @@ root.render(
         >
             <App />
         </Auth0Provider>
-    </StrictMode>
+    </ChakraProvider>
 );

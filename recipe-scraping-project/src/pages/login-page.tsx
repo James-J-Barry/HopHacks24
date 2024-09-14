@@ -8,6 +8,14 @@ import {
     Alert,
     AlertIcon,
     Spinner,
+    Flex,
+    Container,
+    Center,
+    FormControl,
+    FormLabel,
+    Input,
+    Button,
+
 } from "@chakra-ui/react";
 import ProfileComponent from "../components/auth-profile-component";
 import LoginButton from "../components/auth-login-component";
@@ -27,30 +35,27 @@ const LoginPage: React.FC = () => {
     }
 
     return (
-        <Box maxW="sm" mx="auto" mt="8">
-            <VStack spacing={4} align="stretch">
-                <Heading as="h1" size="xl" textAlign="center">
-                    Recipe Manager
-                </Heading>
-                <Heading as="h2" size="lg" textAlign="center">
-                    Login
-                </Heading>
-                {error && (
-                    <Alert status="error">
-                        <AlertIcon />
-                        {error.message}
-                    </Alert>
-                )}
-                {isAuthenticated ? (
-                    <>
-                        <ProfileComponent />
-                        <LogoutButton />
-                    </>
-                ) : (
+        <Flex minH="100vh" align="center" justify="center" bg="gray.300">
+            <Container maxW="md" centerContent>
+                <Box
+                    p={8}
+                    borderWidth={1}
+                    borderRadius="lg"
+                    boxShadow="lg"
+                    w="100%"
+                    backgroundColor={"white"}
+                >
+                    <Center mb={6}>
+                        <Heading>Recipe Manager</Heading>
+                    </Center>
+                    <Heading as="h2" size="lg" mb={6} textAlign="center">
+                    </Heading>
+
                     <LoginButton />
-                )}
-            </VStack>
-        </Box>
+                    
+                </Box>
+            </Container>
+        </Flex>
     );
 };
 
