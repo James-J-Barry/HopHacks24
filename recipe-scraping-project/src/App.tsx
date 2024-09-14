@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
 import RecipesService from "./shared/services/recipes.service";
 import { RecipeData } from "./shared/models/recipe-model";
-import LoginComponent from "./pages/login-component";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginComponent from './pages/login-component';
+import Dashboard from './pages/Dashboard';
 
-export default function App(): JSX.Element {
-    
+const App: React.FC = () => {
     return (
-        <LoginComponent />
+        <Router>
+            <Routes>
+                <Route path="/" element={<LoginComponent />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+        </Router>
     );
-}
+};
+
+export default App;
