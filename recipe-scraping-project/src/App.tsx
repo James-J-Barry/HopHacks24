@@ -6,20 +6,25 @@ import AuthLogin from "./components/auth-login-component";
 import AuthProfile from "./components/auth-profile-component";
 import AuthLogout from "./components/auth-logout-component";
 import { ChakraProvider } from "@chakra-ui/react";
+import ImageUpload from "./components/image-upload.component";
 
 const App: React.FC = () => {
     return (
         <>
             <ChakraProvider>
-                <Router>
+                {/* <Router>
                 <Routes>
                     <Route path="/" element={<LoginPage />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                 </Routes>
             </Router>
-                {/* <AuthLogin></AuthLogin>
+                <AuthLogin></AuthLogin>
                 <AuthProfile></AuthProfile>
                 <AuthLogout></AuthLogout> */}
+                <div className="App">
+                    <h1>Food Image Classification</h1>
+                    <ImageUpload />
+                </div>
             </ChakraProvider>
         </>
     );
