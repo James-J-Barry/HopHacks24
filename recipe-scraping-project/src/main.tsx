@@ -21,8 +21,8 @@ const root = createRoot(document.getElementById("root")!);
 root.render(
     <ChakraProvider>
         <Auth0Provider
-            domain="dev-lx5lijszjsaxjcw5.us.auth0.com"
-            clientId="lrUTsHCL66dg1N6ykzwszsbqzLtYTTLu"
+            domain="dev-h7f5x2f6f72tbl0u.us.auth0.com"
+            clientId="FuHhadAPRUNBGstEJ3biRIstt31R5Gxm"
             authorizationParams={{
                 redirect_uri: window.location.origin,
             }}
