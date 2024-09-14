@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RecipesService from "../shared/services/recipes.service";
 import { RecipeData } from "../shared/models/recipe-model";
+import NavbarComponent from "../components/Navbar-comp/Navbar";
 
 const Dashboard: React.FC = () => {
     const [recipes, setRecipes] = useState<RecipeData[] | null>(null);
@@ -40,6 +41,7 @@ const Dashboard: React.FC = () => {
 
     return (
         <div className="App">
+            <NavbarComponent/>
             <h1>Recipes</h1>
             {error ? (
                 <div>Error: {error}</div>

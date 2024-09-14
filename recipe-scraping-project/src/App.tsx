@@ -12,15 +12,12 @@ const App: React.FC = () => {
     return (
         <>
             <ChakraProvider>
-                {/* <Router>
-                <Routes>
-                    <Route path="/" element={<LoginPage />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                </Routes>
-            </Router>
-                <AuthLogin></AuthLogin>
-                <AuthProfile></AuthProfile>
-                <AuthLogout></AuthLogout> */}
+                { <><Router>
+                        <Routes>
+                            <Route path="/" element={<LoginPage />} />
+                            <Route path="/dashboard" element={<Dashboard />} />
+                        </Routes>
+                </Router></> }
                 <div className="App">
                     <h1>Food Image Classification</h1>
                     <ImageUpload />
