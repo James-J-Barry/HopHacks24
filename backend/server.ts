@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
-import { MongoClient, ServerApiVersion } from 'mongodb';
+import { Db, MongoClient, ServerApiVersion } from 'mongodb';
 import dotenv from 'dotenv';
 import recipesRoute from './routes/recipes-routes';
 
@@ -20,7 +20,7 @@ const client: MongoClient = new MongoClient(uri, {
     },
 });
 
-let db; // The database connection will be stored here
+let db: Db; // The database connection will be stored here
 
 async function connectToDatabase() {
     try {
@@ -28,10 +28,10 @@ async function connectToDatabase() {
         db = client.db(dbName);
         console.log("Connected to MongoDB");
 
-        const collectionInfo = await db.listCollections({ name: "inquiries" }).next();
+        const collectionInfo = await db.listCollections({ name: "recipes" }).next();
         if (!collectionInfo) {
-            await db.createCollection("inquiries");
-            console.log("Collection inquiries created!");
+            await db.createCollection("recipes");
+            console.log("Collection recipes created!");
         }
     } catch (err) {
         console.error(err);
@@ -52,7 +52,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use("/api/recipes", recipesRoute);
 
 app.get("/", (req: Request, res: Response) => {
-    res.send("TU Campus Inquiry Request Server");
+    res.send("Home");
 });
 
 app.listen(port, () => {
