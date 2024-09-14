@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 import dotenv from 'dotenv';
-// import testRoute from './routes/test-route';
+import recipesRoute from './routes/recipes-routes';
 
 dotenv.config();
 
@@ -49,7 +49,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next();
 });
 
-// app.use("/api/inquiries", testRoute);
+app.use("/api/recipes", recipesRoute);
 
 app.get("/", (req: Request, res: Response) => {
     res.send("TU Campus Inquiry Request Server");
