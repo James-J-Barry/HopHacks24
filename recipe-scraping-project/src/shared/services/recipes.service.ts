@@ -5,7 +5,7 @@ import { RecipeData } from "../models/recipe-model";
 
 const apiUrl = `${environment.apiUrl}/recipes`;
 
-const DataService = () => {
+const RecipesService = () => {
     const [recipeData, setRecipeData] = useState<RecipeData | null>(null);
 
     const getRecipes = async (): Promise<any> => {
@@ -71,4 +71,4 @@ const DataService = () => {
     };
 };
 
-export default DataService;
+export default RecipesService;
