@@ -1,16 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LoginComponent from './pages/login-page';
-import Dashboard from './pages/dashboard-page';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/login-page";
+import Dashboard from "./pages/dashboard-page";
+import AuthLogin from "./components/auth-login-component";
+import AuthProfile from "./components/auth-profile-component";
+import AuthLogout from "./components/auth-logout-component";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const App: React.FC = () => {
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<LoginComponent />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-            </Routes>
-        </Router>
+        <>
+            <ChakraProvider>
+                <Router>
+                <Routes>
+                    <Route path="/" element={<LoginPage />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                </Routes>
+            </Router>
+                {/* <AuthLogin></AuthLogin>
+                <AuthProfile></AuthProfile>
+                <AuthLogout></AuthLogout> */}
+            </ChakraProvider>
+        </>
     );
 };
 
