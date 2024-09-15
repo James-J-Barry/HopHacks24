@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import imagePredictionService from "../shared/services/image-prediction.service";
 
-const ImageUpload: React.FC = () => {
+export function ImageUpload() {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [prediction, setPrediction] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
@@ -44,6 +44,4 @@ const ImageUpload: React.FC = () => {
             {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
     );
-};
-
-export default ImageUpload;
+}

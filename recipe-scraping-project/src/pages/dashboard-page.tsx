@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import RecipesService from "../shared/services/recipes.service";
 import { RecipeData } from "../shared/models/recipe-model";
-import NavbarComponent from "../components/Navbar-comp/Navbar";
-import AuthLogout from "../components/auth-logout-component.tsx"; // Replace "../path/to/AuthLogout" with the actual path to the AuthLogout component
+import { NavbarComponent } from "../components/navbar/navbar-component.tsx";
 
-const Dashboard: React.FC = () => {
+export default function Dashboard() {
     const [recipes, setRecipes] = useState<RecipeData[] | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [newRecipe, setNewRecipe] = useState<RecipeData>({
@@ -42,7 +41,7 @@ const Dashboard: React.FC = () => {
 
     return (
         <div className="App">
-            <NavbarComponent/>
+            <NavbarComponent />
             <h1>Recipes</h1>
             {error ? (
                 <div>Error: {error}</div>
@@ -105,6 +104,4 @@ const Dashboard: React.FC = () => {
             <button onClick={handleAddRecipe}>Add Recipe</button>
         </div>
     );
-};
-
-export default Dashboard;
+}

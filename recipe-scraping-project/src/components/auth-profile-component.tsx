@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Flex } from '@chakra-ui/react';
+import { Flex } from "@chakra-ui/react";
 
-const AuthProfile: React.FC = () => {
+export function AuthProfile() {
     const { user, isAuthenticated, isLoading } = useAuth0();
 
     if (isLoading) {
@@ -17,12 +17,13 @@ const AuthProfile: React.FC = () => {
             <Flex display="flex" flexDirection="row">
                 <h2>{user.name}</h2>
                 {user.picture && (
-                    <img src={user.picture} alt={user.name || "User"} style={{ width: "40px", height: "40px" }} />
+                    <img
+                        src={user.picture}
+                        alt={user.name || "User"}
+                        style={{ width: "40px", height: "40px" }}
+                    />
                 )}
             </Flex>
-            
         </div>
     );
-};
-
-export default AuthProfile;
+}

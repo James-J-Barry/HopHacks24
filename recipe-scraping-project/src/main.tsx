@@ -1,20 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App.tsx";
-import {
-  Box,
-  Button,
-  FormControl,
-  FormLabel,
-  Input,
-  Heading,
-  VStack,
-  Alert,
-  AlertIcon,
-  Container,
-  Center,
-  ChakraProvider
-} from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const root = createRoot(document.getElementById("root")!);
 

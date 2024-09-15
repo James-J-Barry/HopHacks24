@@ -1,12 +1,11 @@
-import React from 'react';
-import ImageUpload from '../components/image-upload.component';
-import NavbarComponent from '../components/Navbar-comp/Navbar';
-import { Container, Flex } from '@chakra-ui/react';
+import { ImageUpload } from "../components/image-upload.component";
+import { NavbarComponent } from "../components/navbar/navbar-component";
+import { Container, Flex } from "@chakra-ui/react";
 
-const ImagePage: React.FC = () => {
+export default function ImagePage() {
     return (
         <div className="App">
-            <NavbarComponent/>
+            <NavbarComponent />
             <Flex minH="100vh" align="center" justify="center" bg="gray.300">
                 <Container maxW="md" centerContent>
                     HELP
@@ -15,6 +14,4 @@ const ImagePage: React.FC = () => {
             </Flex>
         </div>
     );
-};
-
-export default ImagePage;
+}

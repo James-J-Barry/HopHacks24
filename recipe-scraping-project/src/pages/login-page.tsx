@@ -1,27 +1,16 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
     Box,
     Heading,
-    VStack,
-    Alert,
-    AlertIcon,
     Spinner,
     Flex,
     Container,
     Center,
-    FormControl,
-    FormLabel,
-    Input,
-    Button,
-
 } from "@chakra-ui/react";
-import ProfileComponent from "../components/auth-profile-component";
-import LoginButton from "../components/auth-login-component";
-import LogoutButton from "../components/auth-logout-component";
+import { AuthLogin } from "../components/auth-login-component";
 
-const LoginPage: React.FC = () => {
+export default function LoginPage() {
     const { isAuthenticated, isLoading, error } = useAuth0();
     const navigate = useNavigate();
 
@@ -48,15 +37,16 @@ const LoginPage: React.FC = () => {
                     <Center mb={6}>
                         <Heading>Recipe Manager</Heading>
                     </Center>
-                    <Heading as="h2" size="lg" mb={6} textAlign="center">
-                    </Heading>
+                    <Heading
+                        as="h2"
+                        size="lg"
+                        mb={6}
+                        textAlign="center"
+                    ></Heading>
 
-                    <LoginButton />
-                    
+                    <AuthLogin />
                 </Box>
             </Container>
         </Flex>
     );
-};
-
-export default LoginPage;
+}

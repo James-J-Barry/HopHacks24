@@ -1,15 +1,14 @@
-import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import './Navbar.css';
+import './navbar.css';
 import { Flex } from '@chakra-ui/react';
-import AuthProfile from '../auth-profile-component';
+import { AuthProfile } from '../auth-profile-component';
 import { useAuth0 } from "@auth0/auth0-react";
 
 const AuthLogout = () => {
     const { logout } = useAuth0();
 }
   
-export default function NavbarComponent() {
+export function NavbarComponent() {
     const { logout } = useAuth0(); // Import the logout function from useAuth0
     return (
             <Navbar bg="light" expand="lg" fixed="top" className="navbar">
