@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import RecipesService from "../shared/services/recipes.service";
 import { RecipeData } from "../shared/models/recipe-model";
 import {
@@ -22,26 +23,27 @@ export default function AddRecipePage() {
         ingredients: [],
         instructions: [],
         nutritionInfo: [],
-        image: "", // Add an image property
+        image: "",
     });
 
     const recipesService = RecipesService();
+    const navigate = useNavigate();
 
     const handleAddRecipe = async () => {
-        setError(null); // Clear previous errors
+        setError(null);
         try {
             const addedRecipe = await recipesService.addRecipe(newRecipe);
             setRecipes((prevRecipes) =>
                 prevRecipes ? [...prevRecipes, addedRecipe] : [addedRecipe]
             );
-            // Clear new recipe form
             setNewRecipe({
                 name: "",
                 ingredients: [],
                 instructions: [],
                 nutritionInfo: [],
-                image: "", // Clear image field
+                image: "",
             });
+            navigate("/recipes-page");
         } catch (err) {
             setError("Failed to add recipe");
         }
