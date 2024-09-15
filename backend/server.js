@@ -3,7 +3,7 @@ const cors = require("cors");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const dotenv = require("dotenv");
 const recipesRoute = require("./routes/recipes-routes");
-const predictRoute = require("./routes/predict-route");
+// const predictRoute = require("./routes/predict-route");
 
 dotenv.config();
 
@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/recipes", recipesRoute);
-app.use("/api/predict", predictRoute);
+// app.use("/api/predict", predictRoute);
 
 
 app.get("/", (req, res) => {
