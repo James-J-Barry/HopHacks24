@@ -25,7 +25,7 @@ export function NavbarComponent() {
                                 >
                                     Recipes
                                     <img
-                                        src="../../../images/dashboard.png"
+                                        src="../../../images/recipe-book.png"
                                         alt="Recipes"
                                         className="navbar-img"
                                     />
@@ -45,7 +45,7 @@ export function NavbarComponent() {
                                     href="/image-upload-page"
                                     className="custom-nav-link"
                                 >
-                                    Image Page
+                                    Upload Recipe
                                     <img
                                         src="../../../images/image-upload.png"
                                         alt="Image Upload Page"
