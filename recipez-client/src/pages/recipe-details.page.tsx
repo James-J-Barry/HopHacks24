@@ -108,45 +108,109 @@ export default function RecipeDetailsPage() {
                         recipe?.name
                     )}
                 </Heading>
-                {recipe?.image && (
-                    <Image
-                        src={recipe.image}
-                        alt={recipe.name}
+
+                {isEditing ? (
+                    <Input
+                        placeholder="Image URL"
+                        value={editedRecipe?.image}
+                        onChange={(e) =>
+                            setEditedRecipe({
+                                ...editedRecipe!,
+                                image: e.target.value,
+                            })
+                        }
                         mb={4}
-                        boxSize="400px"
-                        objectFit="cover"
                     />
+                ) : (
+                    recipe?.image && (
+                        <Image
+                            src={recipe.image}
+                            alt={recipe.name}
+                            mb={4}
+                            boxSize="400px"
+                            objectFit="cover"
+                        />
+                    )
                 )}
+
                 <Text mb={2}>
                     <strong>Ingredients:</strong>
                 </Text>
-                <List spacing={2}>
-                    {recipe?.ingredients?.map((ingredient, index) => (
-                        <ListItem key={index}>
-                            {index + 1}. {ingredient}
-                        </ListItem>
-                    ))}
-                </List>
+                {isEditing ? (
+                    <Textarea
+                        placeholder="Ingredients (comma separated)"
+                        value={editedRecipe?.ingredients?.join(", ")}
+                        onChange={(e) =>
+                            setEditedRecipe({
+                                ...editedRecipe!,
+                                ingredients: e.target.value
+                                    .split(",")
+                                    .map((item) => item.trim()),
+                            })
+                        }
+                        mb={4}
+                    />
+                ) : (
+                    <List spacing={2}>
+                        {recipe?.ingredients?.map((ingredient, index) => (
+                            <ListItem key={index}>
+                                {index + 1}. {ingredient}
+                            </ListItem>
+                        ))}
+                    </List>
+                )}
                 <Text mb={2}>
                     <strong>Instructions:</strong>
                 </Text>
-                <List spacing={2}>
-                    {recipe?.instructions?.map((instruction, index) => (
-                        <ListItem key={index}>
-                            {index + 1}. {instruction}
-                        </ListItem>
-                    ))}
-                </List>
+                {isEditing ? (
+                    <Textarea
+                        placeholder="Instructions (period separated)"
+                        value={editedRecipe?.instructions?.join(". ")}
+                        onChange={(e) =>
+                            setEditedRecipe({
+                                ...editedRecipe!,
+                                instructions: e.target.value
+                                    .split(".")
+                                    .map((item) => item.trim()),
+                            })
+                        }
+                        mb={4}
+                    />
+                ) : (
+                    <List spacing={2}>
+                        {recipe?.instructions?.map((instruction, index) => (
+                            <ListItem key={index}>
+                                {index + 1}. {instruction}
+                            </ListItem>
+                        ))}
+                    </List>
+                )}
                 <Text mb={2}>
                     <strong>Nutrition Info:</strong>
                 </Text>
-                <List spacing={2}>
-                    {recipe?.nutritionInfo?.map((info, index) => (
-                        <ListItem key={index}>
-                            {index + 1}. {info}
-                        </ListItem>
-                    ))}
-                </List>
+                {isEditing ? (
+                    <Textarea
+                        placeholder="Nutrition Info (comma separated)"
+                        value={editedRecipe?.nutritionInfo?.join(", ")}
+                        onChange={(e) =>
+                            setEditedRecipe({
+                                ...editedRecipe!,
+                                nutritionInfo: e.target.value
+                                    .split(",")
+                                    .map((item) => item.trim()),
+                            })
+                        }
+                        mb={4}
+                    />
+                ) : (
+                    <List spacing={2}>
+                        {recipe?.nutritionInfo?.map((info, index) => (
+                            <ListItem key={index}>
+                                {index + 1}. {info}
+                            </ListItem>
+                        ))}
+                    </List>
+                )}
                 {isEditing ? (
                     <>
                         <Button colorScheme="teal" onClick={handleSave} mr={2}>
