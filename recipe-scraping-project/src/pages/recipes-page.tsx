@@ -51,16 +51,15 @@ export default function RecipePage() {
                         {error}
                     </Alert>
                 ) : recipes ? (
-                    <Box
-                    p={8}
-                    borderWidth={1}
-                    borderRadius="lg"
-                    boxShadow="lg"
-                    w="100%"
-                    backgroundColor={"white"}
-                    >   
+                    <Box>   
                         {recipes.map((recipe) => (
-                            <Box key={recipe._id} mb={4}>
+                            <Box p={8}
+                            borderWidth={1}
+                            borderRadius="lg"
+                            boxShadow="lg"
+                            w="100%"
+                            backgroundColor={"white"}
+                            key={recipe._id} mb={4}>
                                 <Heading as="h2" size="md">
                                     {recipe.name}
                                 </Heading>
