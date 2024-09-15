@@ -11,9 +11,6 @@ export default function AuthProfile() {
     const profilePicture = isLoading ? placeholderImage : user?.picture;
     const profileName = isLoading ? "Loading..." : user?.name;
 
-    if (!isAuthenticated || !user) {
-        return null;
-    }
 
     return (
         <Flex alignItems="center" ml={4}>

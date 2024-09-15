@@ -10,6 +10,7 @@ import {
     Alert,
     AlertIcon,
     Spinner,
+    Flex,
 } from "@chakra-ui/react";
 import { NavbarComponent } from "../components/navbar/navbar-component";
 
@@ -41,6 +42,7 @@ export default function RecipePage() {
     return (
         <>
             <NavbarComponent />
+            <Flex minH="100vh" align="center" justify="center" bg="gray.300">
             <Box p={8}>
                 <Heading mb={4}>Recipes</Heading>
                 {error ? (
@@ -49,7 +51,14 @@ export default function RecipePage() {
                         {error}
                     </Alert>
                 ) : recipes ? (
-                    <Box>
+                    <Box
+                    p={8}
+                    borderWidth={1}
+                    borderRadius="lg"
+                    boxShadow="lg"
+                    w="100%"
+                    backgroundColor={"white"}
+                    >   
                         {recipes.map((recipe) => (
                             <Box key={recipe._id} mb={4}>
                                 <Heading as="h2" size="md">
@@ -67,6 +76,7 @@ export default function RecipePage() {
                                     Nutrition Info:{" "}
                                     {recipe.nutritionInfo?.join(", ")}
                                 </p>
+
                             </Box>
                         ))}
                     </Box>
@@ -74,6 +84,7 @@ export default function RecipePage() {
                     <Spinner />
                 )}
             </Box>
+            </Flex>
         </>
     );
 }

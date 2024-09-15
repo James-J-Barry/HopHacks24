@@ -9,10 +9,10 @@ export function NavbarComponent() {
         <Navbar bg="light" expand="lg" fixed="top" className="navbar">
             <Container fluid>
                 <Flex display="flex" flexDirection="row">
-                    <Navbar.Brand className="navbar-brand">
-                        Recipe Manager
-                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarSupportedContent" />
+                    <Navbar.Brand className="navbar-brand">
+                        RecipEZ
+                    </Navbar.Brand>
                     <Navbar.Collapse
                         id="navbarSupportedContent"
                         className="justify-content-end"

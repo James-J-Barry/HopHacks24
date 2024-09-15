@@ -14,7 +14,7 @@ export default function LoginPage() {
                     backgroundColor={"white"}
                 >
                     <Center mb={6}>
-                        <Heading>Recipe Manager</Heading>
+                        <Heading>RecipEZ</Heading>
                     </Center>
                     <Heading as="h2" size="lg" mb={6} textAlign="center">
                         Please Log In

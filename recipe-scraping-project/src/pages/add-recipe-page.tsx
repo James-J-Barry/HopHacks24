@@ -7,6 +7,7 @@ import {
     Input,
     Textarea,
     Button,
+    Flex,
 } from "@chakra-ui/react";
 import { NavbarComponent } from "../components/navbar/navbar-component";
 
@@ -45,7 +46,15 @@ export default function AddRecipePage() {
     return (
         <>
             <NavbarComponent />
-            <Box p={8}>
+            <Flex minH="100vh" align="center" justify="center" bg="gray.300">
+            <Box
+                    p={5}
+                    borderWidth={1}
+                    borderRadius="lg"
+                    boxShadow="lg"
+                    w="100%"
+                    backgroundColor={"white"}
+                >
                 <Heading as="h2" size="lg" mt={8} mb={4}>
                     Add a New Recipe
                 </Heading>
@@ -100,6 +109,7 @@ export default function AddRecipePage() {
                     Add Recipe
                 </Button>
             </Box>
+            </Flex>
         </>
     );
 }
