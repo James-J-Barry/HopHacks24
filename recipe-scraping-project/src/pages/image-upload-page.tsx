@@ -2,7 +2,7 @@ import { ImageUpload } from "../components/image-upload.component";
 import { NavbarComponent } from "../components/navbar/navbar-component";
 import { Container, Flex } from "@chakra-ui/react";
 
-export default function ImagePage() {
+export default function ImageUploadPage() {
     return (
         <div className="App">
             <NavbarComponent />
