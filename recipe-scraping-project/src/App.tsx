@@ -17,8 +17,8 @@ export default function App() {
                 <Routes>
                     {/* Default route: Go to login */}
                     <Route path="/" element={<LoginPage />} />
-                    <Route path="/recipes-page" element={<RecipePage />} />
                     <Route path="/add-recipe-page" element={<AddRecipePage />} />
+                    <Route path="/recipes-page" element={<RecipePage />} />
                     <Route path="/image-upload-page" element={<ImageUploadPage />} />
                     {/* Redirect any unknown route to login */}
                     <Route path="*" element={<Navigate to="/" />} />

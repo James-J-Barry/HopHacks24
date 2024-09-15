@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import RecipesService from "../shared/services/recipes.service";
 import { RecipeData } from "../shared/models/recipe-model";
 import {
@@ -7,9 +7,6 @@ import {
     Input,
     Textarea,
     Button,
-    Alert,
-    AlertIcon,
-    Spinner,
 } from "@chakra-ui/react";
 import { NavbarComponent } from "../components/navbar/navbar-component";
 

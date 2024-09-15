@@ -20,7 +20,7 @@ export function NavbarComponent() {
                         <Nav className="mr-auto">
                             <Flex display="flex" flexDirection="row">
                                 <Nav.Link
-                                    href="/recipe-page"
+                                    href="/recipes-page"
                                     className="custom-nav-link"
                                 >
                                     Recipes
