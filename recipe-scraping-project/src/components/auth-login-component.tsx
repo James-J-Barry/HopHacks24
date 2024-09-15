@@ -1,8 +1,21 @@
+import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Box } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 export function AuthLogin() {
-    const { loginWithRedirect } = useAuth0();
+    const { loginWithRedirect, isAuthenticated } = useAuth0();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/dashboard-page");
+        }
+    }, [isAuthenticated, navigate]);
+
+    const handleLogin = async () => {
+        await loginWithRedirect();
+    };
 
     return (
         <Box
@@ -13,7 +26,7 @@ export function AuthLogin() {
             w="100%"
             backgroundColor={"blue.100"}
         >
-            <button onClick={() => loginWithRedirect()}>Log In</button>
+            <button onClick={handleLogin}>Log In</button>
         </Box>
     );
 }

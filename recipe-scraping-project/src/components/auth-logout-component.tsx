@@ -11,9 +11,12 @@ export function AuthLogout() {
             colorScheme="blue"
             onClick={() =>
                 logout({
-                    logoutParams: { returnTo: window.location.origin },
+                    logoutParams: {
+                        returnTo: `${window.location.origin}/login-page`,
+                    },
                 })
             }
+            ml={2} // Add some margin to the left to separate it from the profile
         >
             Log Out
         </Button>

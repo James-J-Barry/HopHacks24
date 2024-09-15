@@ -41,20 +41,12 @@ export function NavbarComponent() {
                                         className="navbar-img"
                                     />
                                 </Nav.Link>
-                                <AuthProfile />
-                                <AuthLogout />
-                                {/* <button
-                                    onClick={() =>
-                                        logout({
-                                            logoutParams: {
-                                                returnTo:
-                                                    window.location.origin,
-                                            },
-                                        })
-                                    }
-                                >
-                                    Log Out
-                                </button> */}
+                                <Nav.Link>
+                                    <AuthProfile />
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <AuthLogout />
+                                </Nav.Link>
                             </Flex>
                         </Nav>
                     </Navbar.Collapse>

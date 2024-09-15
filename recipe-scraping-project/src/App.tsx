@@ -5,7 +5,6 @@ import {
     Navigate,
 } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-import { NavbarComponent } from "./components/navbar/navbar-component";
 import LoginPage from "./pages/login-page";
 import DashboardPage from "./pages/dashboard-page";
 import ImageUploadPage from "./pages/image-upload-page";
@@ -14,8 +13,6 @@ export default function App() {
     return (
         <ChakraProvider>
             <Router>
-                {/* Always show Navbar */}
-                <NavbarComponent />
                 <Routes>
                     {/* Default route: Go to login */}
                     <Route path="/" element={<LoginPage />} />

@@ -11,6 +11,7 @@ import {
     AlertIcon,
     Spinner,
 } from "@chakra-ui/react";
+import { NavbarComponent } from "../components/navbar/navbar-component";
 
 export default function DashboardPage() {
     const [recipes, setRecipes] = useState<RecipeData[] | null>(null);
@@ -38,6 +39,7 @@ export default function DashboardPage() {
     }, []);
 
     const handleAddRecipe = async () => {
+        setError(null); // Clear previous errors
         try {
             const addedRecipe = await recipesService.addRecipe(newRecipe);
             setRecipes((prevRecipes) =>
@@ -57,6 +59,7 @@ export default function DashboardPage() {
 
     return (
         <>
+            <NavbarComponent />
             <Box p={8}>
                 <Heading mb={4}>Recipes</Heading>
                 {error ? (
@@ -107,7 +110,9 @@ export default function DashboardPage() {
                     onChange={(e) =>
                         setNewRecipe({
                             ...newRecipe,
-                            ingredients: e.target.value.split(","),
+                            ingredients: e.target.value
+                                .split(",")
+                                .map((item) => item.trim()),
                         })
                     }
                     mb={2}
@@ -118,7 +123,9 @@ export default function DashboardPage() {
                     onChange={(e) =>
                         setNewRecipe({
                             ...newRecipe,
-                            instructions: e.target.value.split("."),
+                            instructions: e.target.value
+                                .split(".")
+                                .map((item) => item.trim()),
                         })
                     }
                     mb={2}
@@ -129,7 +136,9 @@ export default function DashboardPage() {
                     onChange={(e) =>
                         setNewRecipe({
                             ...newRecipe,
-                            nutritionInfo: e.target.value.split(","),
+                            nutritionInfo: e.target.value
+                                .split(",")
+                                .map((item) => item.trim()),
                         })
                     }
                     mb={2}
