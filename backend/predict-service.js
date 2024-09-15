@@ -3,7 +3,7 @@ const tf = require("@tensorflow/tfjs-node");
 // Load the model
 let model;
 const loadModel = async () => {
-    model = await tf.loadGraphModel("file://path/to/model/model.json");
+    model = await tf.loadGraphModel("./food-image-classification-model/food-image-classification-model/model.json");
 };
 loadModel();
 
