@@ -1,4 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { Flex } from '@chakra-ui/react';
 
 const AuthProfile: React.FC = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
@@ -13,11 +14,13 @@ const AuthProfile: React.FC = () => {
 
     return (
         <div>
-            {user.picture && (
-                <img src={user.picture} alt={user.name || "User"} />
-            )}
-            <h2>{user.name}</h2>
-            <p>{user.email}</p>
+            <Flex display="flex" flexDirection="row">
+                <h2>{user.name}</h2>
+                {user.picture && (
+                    <img src={user.picture} alt={user.name || "User"} style={{ width: "40px", height: "40px" }} />
+                )}
+            </Flex>
+            
         </div>
     );
 };

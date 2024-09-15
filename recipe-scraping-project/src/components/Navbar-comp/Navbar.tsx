@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import './Navbar.css';
 import { Flex } from '@chakra-ui/react';
+import AuthProfile from '../auth-profile-component';
 
 export default function NavbarComponent() {
     return (
@@ -39,6 +40,7 @@ export default function NavbarComponent() {
                                             className="navbar-img"
                                         />
                                     </Nav.Link>
+                                    <AuthProfile />
                                 </Flex>
                             </Nav>
                         </Navbar.Collapse>
