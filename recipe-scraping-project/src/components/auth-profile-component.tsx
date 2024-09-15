@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { Flex } from "@chakra-ui/react";
 
-export function AuthProfile() {
+export default function AuthProfile() {
     const { user, isAuthenticated, isLoading } = useAuth0();
 
     if (isLoading) {

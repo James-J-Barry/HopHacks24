@@ -1,17 +1,24 @@
 import { ImageUpload } from "../components/image-upload.component";
-import { NavbarComponent } from "../components/navbar/navbar-component";
-import { Container, Flex } from "@chakra-ui/react";
+import { Container, Flex, Heading, Box } from "@chakra-ui/react";
 
 export default function ImageUploadPage() {
     return (
-        <div className="App">
-            <NavbarComponent />
-            <Flex minH="100vh" align="center" justify="center" bg="gray.300">
-                <Container maxW="md" centerContent>
-                    HELP
+        <Flex minH="100vh" align="center" justify="center" bg="gray.300">
+            <Container maxW="md" centerContent>
+                <Box
+                    p={4}
+                    borderWidth={1}
+                    borderRadius="lg"
+                    boxShadow="lg"
+                    bg="white"
+                    w="100%"
+                >
+                    <Heading as="h2" size="lg" mb={4} textAlign="center">
+                        Image Upload and Prediction
+                    </Heading>
                     <ImageUpload />
-                </Container>
-            </Flex>
-        </div>
+                </Box>
+            </Container>
+        </Flex>
     );
 }

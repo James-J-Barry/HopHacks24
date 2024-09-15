@@ -1,15 +1,28 @@
 import React, { useState } from "react";
 import imagePredictionService from "../shared/services/image-prediction.service";
+import {
+    Box,
+    Button,
+    Input,
+    Image,
+    Text,
+    VStack,
+    Alert,
+    AlertIcon,
+} from "@chakra-ui/react";
 
 export function ImageUpload() {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [prediction, setPrediction] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>("");
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
-            setSelectedFile(event.target.files[0]);
+            const file = event.target.files[0];
+            setSelectedFile(file);
+            setPreviewUrl(URL.createObjectURL(file));
         }
     };
 
@@ -35,13 +48,41 @@ export function ImageUpload() {
     };
 
     return (
-        <div>
-            <input type="file" accept="image/*" onChange={handleFileChange} />
-            <button onClick={handleUpload} disabled={loading}>
-                {loading ? "Uploading..." : "Upload and Predict"}
-            </button>
-            {prediction && <p>Prediction: {prediction}</p>}
-            {error && <p style={{ color: "red" }}>{error}</p>}
-        </div>
+        <Box p={4} borderWidth={1} borderRadius="lg" boxShadow="lg" bg="white">
+            <VStack spacing={4}>
+                <Input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    variant="unstyled"
+                />
+                {previewUrl && (
+                    <Image
+                        src={previewUrl}
+                        alt="Selected file"
+                        maxH="200px"
+                        borderRadius="md"
+                    />
+                )}
+                <Button
+                    colorScheme="teal"
+                    onClick={handleUpload}
+                    isLoading={loading}
+                >
+                    Upload and Predict
+                </Button>
+                {prediction && (
+                    <Text fontSize="lg" fontWeight="bold">
+                        Prediction: {prediction}
+                    </Text>
+                )}
+                {error && (
+                    <Alert status="error">
+                        <AlertIcon />
+                        {error}
+                    </Alert>
+                )}
+            </VStack>
+        </Box>
     );
 }

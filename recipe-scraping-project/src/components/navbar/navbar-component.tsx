@@ -1,17 +1,15 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "./navbar-component.css";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Flex } from "@chakra-ui/react";
-import { AuthProfile } from "../auth-profile-component";
+import AuthProfile from "../auth-profile-component";
 import { AuthLogout } from "../auth-logout-component";
 
 export function NavbarComponent() {
-    const { logout } = useAuth0(); // Import the logout function from useAuth0
     return (
         <Navbar bg="light" expand="lg" fixed="top" className="navbar">
             <Container fluid>
                 <Flex display="flex" flexDirection="row">
-                    <Navbar.Brand href="#home" className="navbar-brand">
+                    <Navbar.Brand className="navbar-brand">
                         Recipe Manager
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarSupportedContent" />
@@ -22,7 +20,7 @@ export function NavbarComponent() {
                         <Nav className="mr-auto">
                             <Flex display="flex" flexDirection="row">
                                 <Nav.Link
-                                    href="/dashboard"
+                                    href="/dashboard-page"
                                     className="custom-nav-link"
                                 >
                                     Dashboard
@@ -44,8 +42,8 @@ export function NavbarComponent() {
                                     />
                                 </Nav.Link>
                                 <AuthProfile />
-                                {/* <AuthLogout /> */}
-                                <button
+                                <AuthLogout />
+                                {/* <button
                                     onClick={() =>
                                         logout({
                                             logoutParams: {
@@ -56,7 +54,7 @@ export function NavbarComponent() {
                                     }
                                 >
                                     Log Out
-                                </button>
+                                </button> */}
                             </Flex>
                         </Nav>
                     </Navbar.Collapse>
