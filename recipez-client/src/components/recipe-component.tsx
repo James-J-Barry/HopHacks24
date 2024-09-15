@@ -1,4 +1,12 @@
-import { Box, Heading, Button, Image, Text } from "@chakra-ui/react";
+import {
+    Box,
+    Heading,
+    Button,
+    Image,
+    Text,
+    List,
+    ListItem,
+} from "@chakra-ui/react";
 import { RecipeData } from "../shared/models/recipe-model";
 import { useNavigate } from "react-router-dom";
 
@@ -33,25 +41,43 @@ export function RecipeComponent({ recipe }: RecipeComponentProps) {
                     src={recipe.image}
                     alt={recipe.name}
                     mb={4}
-                    boxSize="200px" 
+                    boxSize="200px"
                     objectFit="cover"
                 />
             )}
             <Text mb={2}>
-                <strong>Ingredients:</strong>{" "}
-                {truncateText(recipe.ingredients?.join(", ") || "", 100)}
+                <strong>Ingredients:</strong>
             </Text>
+            <List spacing={2}>
+                {recipe.ingredients?.map((ingredient, index) => (
+                    <ListItem key={index}>
+                        {index + 1}. {truncateText(ingredient, 100)}
+                    </ListItem>
+                ))}
+            </List>
             <Text mb={2}>
-                <strong>Instructions:</strong>{" "}
-                {truncateText(recipe.instructions?.join(". ") || "", 100)}
+                <strong>Instructions:</strong>
             </Text>
+            <List spacing={2}>
+                {recipe.instructions?.map((instruction, index) => (
+                    <ListItem key={index}>
+                        {index + 1}. {truncateText(instruction, 100)}
+                    </ListItem>
+                ))}
+            </List>
             <Text mb={2}>
-                <strong>Nutrition Info:</strong>{" "}
-                {truncateText(recipe.nutritionInfo?.join(", ") || "", 100)}
+                <strong>Nutrition Info:</strong>
             </Text>
+            <List spacing={2}>
+                {recipe.nutritionInfo?.map((info, index) => (
+                    <ListItem key={index}>
+                        {index + 1}. {truncateText(info, 100)}
+                    </ListItem>
+                ))}
+            </List>
             <Button
                 colorScheme="teal"
-                onClick={() => navigate(`/recipe-details/${recipe._id}`)} 
+                onClick={() => navigate(`/recipe-details/${recipe._id}`)}
                 mt={4}
             >
                 View Details

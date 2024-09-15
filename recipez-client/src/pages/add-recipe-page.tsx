@@ -101,9 +101,7 @@ export default function AddRecipePage() {
                             onChange={(e) =>
                                 setNewRecipe({
                                     ...newRecipe,
-                                    ingredients: e.target.value
-                                        .split(",")
-                                        .map((item) => item.trim()),
+                                    ingredients: e.target.value.split(","),
                                 })
                             }
                         />
@@ -116,9 +114,7 @@ export default function AddRecipePage() {
                             onChange={(e) =>
                                 setNewRecipe({
                                     ...newRecipe,
-                                    instructions: e.target.value
-                                        .split(".")
-                                        .map((item) => item.trim()),
+                                    instructions: e.target.value.split("."),
                                 })
                             }
                         />
@@ -131,9 +127,7 @@ export default function AddRecipePage() {
                             onChange={(e) =>
                                 setNewRecipe({
                                     ...newRecipe,
-                                    nutritionInfo: e.target.value
-                                        .split(",")
-                                        .map((item) => item.trim()),
+                                    nutritionInfo: e.target.value.split(","),
                                 })
                             }
                         />

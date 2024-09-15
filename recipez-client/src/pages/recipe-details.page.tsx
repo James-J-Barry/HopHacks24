@@ -10,6 +10,8 @@ import {
     Textarea,
     Button,
     Flex,
+    List,
+    ListItem,
 } from "@chakra-ui/react";
 import RecipesService from "../shared/services/recipes.service";
 import { RecipeData } from "../shared/models/recipe-model";
@@ -52,9 +54,23 @@ export default function RecipeDetailsPage() {
             );
             setRecipe(updatedRecipe);
             setIsEditing(false);
-            navigate("/recipes-page"); 
+            navigate("/recipes-page");
         } catch (error) {
             console.error("Failed to update recipe", error);
+        }
+    };
+
+    const handleDelete = async () => {
+        try {
+            if (!recipe || !recipe._id) {
+                console.error("No ID provided for the recipe to delete");
+                return;
+            }
+
+            await recipesService.deleteRecipe(recipe._id);
+            navigate("/recipes-page");
+        } catch (error) {
+            console.error("Failed to delete recipe", error);
         }
     };
 
@@ -97,69 +113,40 @@ export default function RecipeDetailsPage() {
                         src={recipe.image}
                         alt={recipe.name}
                         mb={4}
-                        boxSize="400px" 
+                        boxSize="400px"
                         objectFit="cover"
                     />
                 )}
                 <Text mb={2}>
-                    <strong>Ingredients:</strong>{" "}
-                    {isEditing ? (
-                        <Textarea
-                            placeholder="Ingredients (comma separated)"
-                            value={(editedRecipe?.ingredients ?? []).join(",")}
-                            onChange={(e) =>
-                                setEditedRecipe({
-                                    ...editedRecipe!,
-                                    ingredients: e.target.value
-                                        .split(",")
-                                        .map((item) => item.trim()),
-                                })
-                            }
-                        />
-                    ) : (
-                        recipe?.ingredients?.join(", ")
-                    )}
+                    <strong>Ingredients:</strong>
                 </Text>
+                <List spacing={2}>
+                    {recipe?.ingredients?.map((ingredient, index) => (
+                        <ListItem key={index}>
+                            {index + 1}. {ingredient}
+                        </ListItem>
+                    ))}
+                </List>
                 <Text mb={2}>
-                    <strong>Instructions:</strong>{" "}
-                    {isEditing ? (
-                        <Textarea
-                            placeholder="Instructions (period separated)"
-                            value={(editedRecipe?.instructions ?? []).join(".")}
-                            onChange={(e) =>
-                                setEditedRecipe({
-                                    ...editedRecipe!,
-                                    instructions: e.target.value
-                                        .split(".")
-                                        .map((item) => item.trim()),
-                                })
-                            }
-                        />
-                    ) : (
-                        recipe?.instructions?.join(". ")
-                    )}
+                    <strong>Instructions:</strong>
                 </Text>
+                <List spacing={2}>
+                    {recipe?.instructions?.map((instruction, index) => (
+                        <ListItem key={index}>
+                            {index + 1}. {instruction}
+                        </ListItem>
+                    ))}
+                </List>
                 <Text mb={2}>
-                    <strong>Nutrition Info:</strong>{" "}
-                    {isEditing ? (
-                        <Textarea
-                            placeholder="Nutrition Info (comma separated)"
-                            value={(editedRecipe?.nutritionInfo ?? []).join(
-                                ","
-                            )}
-                            onChange={(e) =>
-                                setEditedRecipe({
-                                    ...editedRecipe!,
-                                    nutritionInfo: e.target.value
-                                        .split(",")
-                                        .map((item) => item.trim()),
-                                })
-                            }
-                        />
-                    ) : (
-                        recipe?.nutritionInfo?.join(", ")
-                    )}
+                    <strong>Nutrition Info:</strong>
                 </Text>
+                <List spacing={2}>
+                    {recipe?.nutritionInfo?.map((info, index) => (
+                        <ListItem key={index}>
+                            {index + 1}. {info}
+                        </ListItem>
+                    ))}
+                </List>
                 {isEditing ? (
                     <>
                         <Button colorScheme="teal" onClick={handleSave} mr={2}>
@@ -181,6 +168,14 @@ export default function RecipeDetailsPage() {
                             mr={2}
                         >
                             Edit
+                        </Button>
+                        <Button
+                            colorScheme="red"
+                            onClick={handleDelete}
+                            mt={4}
+                            mr={2}
+                        >
+                            Delete
                         </Button>
                         <Button
                             colorScheme="gray"
