@@ -6,7 +6,7 @@ import AuthLogin from "./components/auth-login-component";
 import AuthProfile from "./components/auth-profile-component";
 import AuthLogout from "./components/auth-logout-component";
 import { ChakraProvider } from "@chakra-ui/react";
-import ImageUpload from "./components/image-upload.component";
+import ImagePage from "./pages/image-page";
 
 const App: React.FC = () => {
     return (
@@ -16,12 +16,9 @@ const App: React.FC = () => {
                         <Routes>
                             <Route path="/" element={<LoginPage />} />
                             <Route path="/dashboard" element={<Dashboard />} />
+                            <Route path="/image-page" element={<ImagePage />} />
                         </Routes>
                 </Router></> }
-                <div className="App">
-                    <h1>Food Image Classification</h1>
-                    <ImageUpload />
-                </div>
             </ChakraProvider>
         </>
     );

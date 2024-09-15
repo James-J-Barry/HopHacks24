@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RecipesService from "../shared/services/recipes.service";
 import { RecipeData } from "../shared/models/recipe-model";
 import NavbarComponent from "../components/Navbar-comp/Navbar";
+import AuthLogout from "../components/auth-logout-component.tsx"; // Replace "../path/to/AuthLogout" with the actual path to the AuthLogout component
 
 const Dashboard: React.FC = () => {
     const [recipes, setRecipes] = useState<RecipeData[] | null>(null);
