@@ -6,7 +6,13 @@ export default function ImageUploadPage() {
     return (
         <>
             <NavbarComponent />
-            <Flex minH="100vh" align="center" justify="center" bg="gray.300">
+            <Flex
+                minH="100vh"
+                align="center"
+                justify="center"
+                bg="gray.300"
+                p={4}
+            >
                 <Container maxW="md" centerContent>
                     <Box
                         p={4}
@@ -14,7 +20,7 @@ export default function ImageUploadPage() {
                         borderRadius="lg"
                         boxShadow="lg"
                         bg="white"
-                        maxW="600px" 
+                        maxW="600px"
                         w="100%"
                     >
                         <Heading as="h2" size="lg" mb={4} textAlign="center">

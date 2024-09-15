@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import imagePredictionService from "../shared/services/image-prediction.service";
+import imagePredictionService from "../shared/services/image-predictor.service";
 import {
     Box,
     Button,
@@ -40,12 +40,21 @@ export function ImageUpload() {
                 selectedFile
             );
             setPrediction(result);
-        } catch (error) {
+        } catch (err) {
             setError("Error uploading the image and getting prediction.");
         } finally {
             setLoading(false);
         }
     };
+
+    // Clean up URL object to prevent memory leaks
+    React.useEffect(() => {
+        return () => {
+            if (previewUrl) {
+                URL.revokeObjectURL(previewUrl);
+            }
+        };
+    }, [previewUrl]);
 
     return (
         <Box p={4} borderWidth={1} borderRadius="lg" boxShadow="lg" bg="white">
@@ -68,6 +77,7 @@ export function ImageUpload() {
                     colorScheme="teal"
                     onClick={handleUpload}
                     isLoading={loading}
+                    isDisabled={!selectedFile}
                 >
                     Upload and Predict
                 </Button>

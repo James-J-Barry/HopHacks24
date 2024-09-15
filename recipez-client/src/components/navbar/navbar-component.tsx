@@ -5,6 +5,14 @@ import AuthProfile from "../auth-profile-component";
 import { AuthLogout } from "../auth-logout-component";
 
 export function NavbarComponent() {
+    const handleLogout = () => {
+        // Clear user session, token, etc.
+        localStorage.removeItem("token");
+
+        // Redirect to login page
+        window.location.href = "/login-page";
+    };
+
     return (
         <Navbar bg="light" expand="lg" fixed="top" className="navbar">
             <Container fluid>
@@ -56,7 +64,10 @@ export function NavbarComponent() {
                                     <AuthProfile />
                                 </Nav.Link>
                                 <Nav.Link>
-                                    <AuthLogout />
+                                    <button onClick={handleLogout}>
+                                        Logout
+                                    </button>
+                                    {/* <AuthLogout /> */}
                                 </Nav.Link>
                             </Flex>
                         </Nav>
