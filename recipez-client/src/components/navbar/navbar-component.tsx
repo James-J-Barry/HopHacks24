@@ -60,9 +60,9 @@ export function NavbarComponent() {
                                         className="navbar-img"
                                     />
                                 </Nav.Link>
-                                <Nav.Link>
+                                {/* <Nav.Link>
                                     <AuthProfile />
-                                </Nav.Link>
+                                </Nav.Link> */}
                                 <Nav.Link>
                                     <button onClick={handleLogout}>
                                         Logout
