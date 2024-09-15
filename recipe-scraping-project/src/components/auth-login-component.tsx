@@ -9,7 +9,7 @@ export function AuthLogin() {
 
     useEffect(() => {
         if (isAuthenticated) {
-            navigate("/dashboard-page");
+            navigate("/recipes-page");
         }
     }, [isAuthenticated, navigate]);
 

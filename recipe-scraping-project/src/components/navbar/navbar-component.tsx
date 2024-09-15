@@ -20,13 +20,24 @@ export function NavbarComponent() {
                         <Nav className="mr-auto">
                             <Flex display="flex" flexDirection="row">
                                 <Nav.Link
-                                    href="/dashboard-page"
+                                    href="/recipe-page"
                                     className="custom-nav-link"
                                 >
-                                    Dashboard
+                                    Recipes
                                     <img
                                         src="../../../images/dashboard.png"
-                                        alt="Dashboard"
+                                        alt="Recipes"
+                                        className="navbar-img"
+                                    />
+                                </Nav.Link>
+                                <Nav.Link
+                                    href="/add-recipe-page"
+                                    className="custom-nav-link"
+                                >
+                                    Add Recipe
+                                    <img
+                                        src="../../../images/dashboard.png"
+                                        alt="Add Recipe"
                                         className="navbar-img"
                                     />
                                 </Nav.Link>
