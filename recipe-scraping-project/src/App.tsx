@@ -1,3 +1,4 @@
+// App.tsx
 import {
     BrowserRouter as Router,
     Route,
@@ -9,6 +10,7 @@ import LoginPage from "./pages/login-page";
 import ImageUploadPage from "./pages/image-upload-page";
 import RecipePage from "./pages/recipes-page";
 import AddRecipePage from "./pages/add-recipe-page";
+import RecipeDetailsPage from "./pages/recipe-details.page";
 
 export default function App() {
     return (
@@ -20,6 +22,8 @@ export default function App() {
                     <Route path="/add-recipe-page" element={<AddRecipePage />} />
                     <Route path="/recipes-page" element={<RecipePage />} />
                     <Route path="/image-upload-page" element={<ImageUploadPage />} />
+                    {/* New route for recipe details */}
+                    <Route path="/recipe-details/:id" element={<RecipeDetailsPage />} />
                     {/* Redirect any unknown route to login */}
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>

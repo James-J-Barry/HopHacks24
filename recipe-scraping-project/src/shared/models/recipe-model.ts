@@ -1,7 +1,8 @@
 export interface RecipeData {
-    _id?: string,
-    name?: string,
-    ingredients?: string[],
-    instructions?: string[],
-    nutritionInfo?: string[],
+    _id?: string;
+    name?: string;
+    ingredients?: string[];
+    instructions?: string[];
+    nutritionInfo?: string[];
+    image?: string;
 }

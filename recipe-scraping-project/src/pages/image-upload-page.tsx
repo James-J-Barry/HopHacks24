@@ -14,10 +14,11 @@ export default function ImageUploadPage() {
                         borderRadius="lg"
                         boxShadow="lg"
                         bg="white"
+                        maxW="600px" 
                         w="100%"
                     >
                         <Heading as="h2" size="lg" mb={4} textAlign="center">
-                            Image Upload and Prediction
+                            Upload Recipe for Nutrition Info
                         </Heading>
                         <ImageUpload />
                     </Box>
