@@ -29,10 +29,10 @@ async function connectToDatabase() {
         console.log("Connected to MongoDB");
 
         const collectionInfo = await db
-            .listCollections({ name: "recipes" })
+            .listCollections({ name: "recipez" })
             .next();
         if (!collectionInfo) {
-            await db.createCollection("recipes");
+            await db.createCollection("recipez");
             console.log("Collection recipes created!");
         }
     } catch (err) {

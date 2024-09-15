@@ -2,7 +2,7 @@ const express = require("express");
 const { ObjectId } = require("mongodb");
 
 const router = express.Router();
-const collectionName = "recipes";
+const collectionName = "recipez";
 
 // Create a new document
 router.post("/", async (req, res) => {
